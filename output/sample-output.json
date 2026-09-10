@@ -1,0 +1,46 @@
+{
+    "security_flags": [
+        {
+            "threat_type": "XSS Script Injection",
+            "action": "Blocked & Isolated",
+            "detected_count": 1
+        },
+        {
+            "threat_type": "SQL Injection Query",
+            "action": "Blocked & Isolated",
+            "detected_count": 2
+        }
+    ],
+    "alu_emails": {
+        "official": [
+            "admin.office@alueducation.com"
+        ],
+        "alumni": [
+            "graduate.network@alumni.alueducation.com"
+        ],
+        "si": [
+            "intern.lead@si.alueducation.com"
+        ],
+        "external": [
+            "vendor.support@gmail.com",
+            "invalid-user@alu-fake.com"
+        ]
+    },
+    "extracted_data": {
+        "urls": [
+            "https://portal.alueducation.com/dashboard?user=active&session=998",
+            "http://docs.alueducation.com/faq#setup",
+            "https://www.wikipedia.org"
+        ],
+        "phone_numbers": [
+            "0788123456",
+            "2246310005",
+            "(555) 019-2834"
+        ],
+        "credit_cards_masked": [
+            "************1029",
+            "************4981",
+            "***********0005"
+        ]
+    }
+}
