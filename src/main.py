@@ -2,26 +2,17 @@ import re
 import json
 import os
 
-# Define Regex Patterns
 PATTERNS = {
-    # Validates standard emails
     "emails": re.compile(r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b'),
-    
-    # Matches URLs with http/https protocols
     "urls": re.compile(r'https?://(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(?::\d+)?(?:/[^\s]*)?'),
-    
-    # Matches international and local phone numbers
     "phone_numbers": re.compile(r'(?:\+\d{1,3}[\s-]?)?\(?\d{3}\)?[\s-]?\d{3}[\s-]?\d{4}\b'),
     
-    # Matches Visa, MasterCard, and AMEX (13 to 16 digits, spaced or hyphenated)
     "credit_cards": re.compile(r'\b(?:\d{4}[-\s]?){3}\d{4}\b|\b\d{4}[-\s]?\d{6}[-\s]?\d{5}\b'),
     
-    # Security Threat Detection Patterns
     "xss_injection": re.compile(r'<script\b[^>]*>(.*?)</script>', re.IGNORECASE),
     "sql_injection": re.compile(r'\b(SELECT|INSERT|DELETE|UPDATE|DROP|ALTER)\b', re.IGNORECASE)
 }
 
-# ALU Specific Email Domains
 ALU_EMAIL_DOMAINS = {
     "alu_official": "@alueducation.com",
     "alu_alumni": "@alumni.alueducation.com",
@@ -81,10 +72,8 @@ def process_data(file_path):
             "detected_count": len(sql_matches)
         })
 
-    # Data Extraction & Validation
     raw_emails = PATTERNS["emails"].findall(content)
     for email in raw_emails:
-        # Reject malformed trailing dots or double dots in domain
         if ".." in email:
             continue
         category = validate_alu_email(email)
