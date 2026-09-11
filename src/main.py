@@ -55,7 +55,6 @@ def process_data(file_path):
         }
     }
 
-    # Security Analysis
     xss_matches = PATTERNS["xss_injection"].findall(content)
     if xss_matches:
         results["security_flags"].append({
