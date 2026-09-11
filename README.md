@@ -1,9 +1,8 @@
-# ALU Data Extraction & Secure Validation Pipeline
+# ALU Data Extraction & Secure Validation flow
 
 ## Overview
 This program extracts structured data from raw, unstructured text files, enforces domain-specific validation rules for African Leadership University (ALU) email addresses, masks sensitive financial records, and screens for potential security injection threats.
 
----
 
 ## File Structure
 alu-regex-data-extraction_otieno0928/
@@ -15,8 +14,6 @@ alu-regex-data-extraction_otieno0928/
 ├── output/
 │   └── sample-output.json
 └── README.md
-
----
 
 ## Implemented Data Types & Patterns
 
@@ -36,16 +33,13 @@ alu-regex-data-extraction_otieno0928/
    - Regex: (?:\+\d{1,3}[\s-]?)?\(?\d{3}\)?[\s-]?\d{3}[\s-]?\d{4}\b
    - Extraction: Supports local and international phone number formats (e.g., +254..., +250..., (555)...).
 
----
-
 ## Security Considerations
 
 - Input Sanitization & Injection Prevention: Scans inputs for Cross-Site Scripting (<script>) and SQL Injection queries (SELECT, DROP TABLE). Malicious tokens are isolated and recorded under security_flags.
 - Sensitive Data Exposure: PCI-DSS compliant masking applied to all credit card records prior to stdout/JSON output.
 
----
 
-## How to Run
+## How to Run it 
 
 1. Ensure Python 3.x is installed:
    python3 --version
